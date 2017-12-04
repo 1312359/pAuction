@@ -33,6 +33,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap', '~>4.0.0.beta'
 gem 'jquery-rails'
 gem 'font-awesome-rails'
+gem 'wow-rails'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 gem "fog-google"
