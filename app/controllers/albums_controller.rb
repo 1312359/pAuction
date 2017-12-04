@@ -25,7 +25,9 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.json
   def create
-    @album = Album.new(album_params)
+    a = album_params[:images]
+    a.unshift album_params[:cover]
+    @album = Album.new(title: album_params[:title], images: a, description: album_params[:description])
     @album.user = current_user
     if @album.save!
       flash[:success] = "Album was successfully created"
@@ -57,7 +59,7 @@ class AlbumsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def album_params
-      params.require(:album).permit(:title, :description, {images: []})
+      params.require(:album).permit(:title, :description, :cover, images: [])
     end
     
     # User only perfome action to own albums
